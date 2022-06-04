@@ -1,0 +1,40 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Create";
+    
+
+}
+
+<div class="container mt-5">
+    <form method="post" enctype="multipart/form-data">
+
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.PhotoFile">Image</label>
+            <input asp-for="@Model.PhotoFile" accept="image/*"/>
+            <span asp-validation-for="@Model.PhotoFile"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.Name">Name</label>
+            <input asp-for="@Model.Name"/>
+            <span asp-validation-for="@Model.Name"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.Price">Price</label>
+            <input asp-for="@Model.Price"/>
+            <span asp-validation-for="@Model.Price"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.TagId">Tags</label>
+            <select class="form-control" asp-for="@Model.TagId" asp-items="@(new SelectList(ViewBag.Tags,"Id","Name"))">
+            </select>
+        </div>
+         <div class="form-group col-md-3">
+            <label asp-for="@Model.CategoryIds">Categories</label>
+            <select class="form-control" asp-for="@Model.CategoryIds" asp-items="@(new SelectList(ViewBag.Categories,"Id","Name"))">
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success mt-4">Create</button>
+    </form>
+
+
+</div>
